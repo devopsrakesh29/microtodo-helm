@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: {{ .Release.Name }}-gettask-ingress
+  labels:
+    app.kubernetes.io/name: {{ .Release.Name }}-gettask-ingress
+spec:
+  ingressClassName: {{ .Values.common.acrServerAddress }}
+  rules:
+  - host: {{ .Values.gettask.ingress.host }}
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: {{ .Release.Name }}-gettask
+            port: 
+              number: {{ .Values.gettask.ingress.port }}

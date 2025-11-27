@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}-microtodoui
+spec:
+  replicas: 2
+  strategy:
+    rollingUpdate:
+      maxSurge: 0
+      maxUnavailable: 25%
+  selector:
+    matchLabels:
+      app: {{ .Release.Name }}-microtodoui
+  template:
+    metadata:
+      labels:
+        app: {{ .Release.Name }}-microtodoui
+    spec:
+      containers:
+      - name: {{ .Release.Name }}-microtodoui
+        image: {{ .Values.common.acrServerAddress }}/{{ .Values.ui.image.repository }}:{{ .Values.ui.image.tag }}
+        ports:
+        - containerPort: {{ .Values.ui.containerPort}}
+          protocol: TCP
+          

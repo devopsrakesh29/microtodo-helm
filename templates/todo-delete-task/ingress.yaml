@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: {{ .Release.Name }}-deletetask
+  labels:
+    app.kubernetes.io/name: {{ .Release.Name }}-deletetask
+spec:
+  ingressClassName: {{ .Values.common.ingressClassName }}
+  rules:
+  - host: {{ .Values.deletetask.ingress.host }}
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: {{ .Release.Name }}-deletetask
+            port: 
+              number: {{ .Values.deletetask.ingress.port }}

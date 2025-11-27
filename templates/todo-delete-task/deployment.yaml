@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}-deletetask
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: {{ .Release.Name }}-deletetask
+  template:
+    metadata:
+      labels:
+        app: {{ .Release.Name }}-deletetask
+    spec:
+      containers:
+      - name: {{ .Release.Name }}-deletetask
+        image: {{ .Values.common.acrServerAddress}}/{{ .Values.deletetask.image.repository }}:{{ .Values.deletetask.image.tag }}
+        ports:
+        - containerPort: {{ .Values.deletetask.containerPort }}
+        env:
+        - name: CONNECTION_STRING
+          value: {{ .Values.deletetask.env.connectionString }}

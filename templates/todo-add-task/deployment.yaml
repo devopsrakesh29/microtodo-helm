@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}-addtask
+spec:
+  selector:
+    matchLabels:
+      app: {{ .Release.Name }}-addtask
+  template:
+    metadata:
+      labels:
+        app: {{ .Release.Name }}-addtask
+        
+    spec:
+      containers:
+      - name: {{ .Release.Name }}-addtask
+        image: {{ .Values.common.acrServerAddress }}/{{ .Values.addtask.image.repository }}:{{ .Values.addtask.image.tag }}
+        ports:
+        - containerPort: {{ .Values.addtask.containerPort }}
+        env:
+        - name: CONNECTION_STRING
+          value: {{ .Values.addtask.env.connectionString}}

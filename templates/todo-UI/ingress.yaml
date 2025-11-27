@@ -1,0 +1,22 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: {{ .Release.Name }}-microtodoui-ingress
+  labels:
+    app.kubernetes.io/name: {{ .Release.Name }}-microtodoui-ingress
+  # annotations:
+  #   kubernetes.io/ingress.class: azure-application-gateway   # ✅ Required for AGIC
+  
+spec:
+  ingressClassName: azure-application-gateway
+  rules:
+  - host: {{ .Values.ui.ingress.host }}
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: {{ .Release.Name }}-microtodoui
+            port: 
+              number: {{ .Values.ui.ingress.port }}
