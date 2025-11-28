@@ -14,9 +14,9 @@ spec:
     spec:
       containers:
       - name: {{ .Release.Name }}-deletetask
-        image: {{ .Values.common.acrServerAddress}}/{{ .Values.deletetask.image.repository }}:{{ .Values.deletetask.image.tag }}
+        image: "{{ .Values.common.acrServerAddress}}/{{ .Values.deletetask.image.repository }}:{{ .Values.deletetask.image.tag }}"
         ports:
-        - containerPort: {{ .Values.deletetask.containerPort }}
+        - containerPort: {{ .Values.deletetask.port }}
         env:
         - name: CONNECTION_STRING
           value: {{ .Values.deletetask.env.connectionString }}

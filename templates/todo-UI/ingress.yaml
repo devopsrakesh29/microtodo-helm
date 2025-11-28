@@ -19,4 +19,4 @@ spec:
           service:
             name: {{ .Release.Name }}-microtodoui
             port: 
-              number: {{ .Values.ui.ingress.port }}
+              number: {{ .Values.ui.port }}

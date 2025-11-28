@@ -16,4 +16,4 @@ spec:
           service:
             name: {{ .Release.Name }}-deletetask
             port: 
-              number: {{ .Values.deletetask.ingress.port }}
+              number: {{ .Values.deletetask.port }}

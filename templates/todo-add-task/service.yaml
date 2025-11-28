@@ -3,8 +3,9 @@ kind: Service
 metadata:
   name: {{ .Release.Name}}-addtask
 spec:
+  type: ClusterIP
   selector:
     app: {{ .Release.Name}}-addtask
   ports:
-  - port: {{ .Values.addtask.service.port }}
-    targetPort: {{ .Values.addtask.service.targetPort }}
+  - port: {{ .Values.addtask.servicePort }}
+    targetPort: {{ .Values.addtask.port }}

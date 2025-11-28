@@ -16,4 +16,4 @@ spec:
           service:
             name: {{ .Release.Name }}-gettask
             port: 
-              number: {{ .Values.gettask.ingress.port }}
+              number: {{ .Values.gettask.port }}

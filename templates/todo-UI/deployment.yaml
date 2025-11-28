@@ -18,8 +18,8 @@ spec:
     spec:
       containers:
       - name: {{ .Release.Name }}-microtodoui
-        image: {{ .Values.common.acrServerAddress }}/{{ .Values.ui.image.repository }}:{{ .Values.ui.image.tag }}
+        image: "{{ .Values.common.acrServerAddress }}/{{ .Values.ui.image.repository }}:{{ .Values.ui.image.tag }}"
         ports:
-        - containerPort: {{ .Values.ui.containerPort}}
+        - containerPort: {{ .Values.ui.port }}
           protocol: TCP
           

@@ -2,62 +2,51 @@ common:
   acrServerAddress: rakeshacr.azurecr.io
   ingressClassName: azure-application-gateway
 
-
-# UI specific values
 ui:  
   image:
     repository: microtodoui
     tag: v1  
-  containerPort: 8000  
-  service:
-    port: 80
-    targetPort: 8000  
+  port: 80 
+  servicePort: 80
   ingress: 
-    host: addtask.devopsinsight.biz
-    port: 80  
+    host: todoui.devopsinsight.biz
+    
 
 # add task specific values
 addtask:  
   image:
     repository: addtask
     tag: v1
-  containerPort: 8000  
   env:
     connectionString: "Driver={ODBC Driver 18 for SQL Server};Server=tcp:rakeshdbs01.database.windows.net,1433;Database=rakeshsqldb01;Uid=azureuser;Pwd=Password@@12345;Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;"
-  service:
-    port: 80
-    targetPort: 8000  
+  servicePort: 80
+  port: 8000 
   ingress: 
     host: addtask.devopsinsight.biz
-    port: 80
 
 # delete task specific values
 deletetask:  
   image:
     repository: deletetask
     tag: v1  
-  containerPort: 8000  
   env:
     connectionString: "Driver={ODBC Driver 18 for SQL Server};Server=tcp:rakeshdbs01.database.windows.net,1433;Database=rakeshsqldb01;Uid=azureuser;Pwd=Password@@12345;Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;"
-  service:
-    port: 80
-    targetPort: 8000  
+  servicePort: 80
+  port: 8000
   ingress: 
     host: deletetask.devopsinsight.biz
-    port: 80  
+      
 
 # get task specific values
 gettask:  
   image:
     repository: gettask
     tag: v1  
-  containerPort: 8000  
+  port: 8000  
   env:
     connectionString: "Driver={ODBC Driver 18 for SQL Server};Server=tcp:rakeshdbs01.database.windows.net,1433;Database=rakeshsqldb01;Uid=azureuser;Pwd=Password@@12345;Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;"
-  service:
-    port: 80
-    targetPort: 8000  
+  servicePort: 80
+     
   ingress: 
-    host: deletetask.devopsinsight.biz
-    port: 80       
+    host: gettask.devopsinsight.biz    
 

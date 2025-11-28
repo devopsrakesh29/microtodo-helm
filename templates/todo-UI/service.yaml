@@ -7,7 +7,7 @@ spec:
   selector:
     app: {{ .Release.Name }}-microtodoui
   ports:
-  - port: {{ .Values.ui.service.port }}
-    targetPort: {{ .Values.ui.service.targetPort }}
+  - port: {{ .Values.ui.servicePort }}
+    targetPort: {{ .Values.ui.port }}
 
     

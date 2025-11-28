@@ -3,8 +3,9 @@ kind: Service
 metadata:
   name: {{ .Release.Name}}-deletetask
 spec:
+  type: ClusterIP
   selector:
     app: {{ .Release.Name}}-deletetask
   ports:
-  - port: {{ .Values.deletetask.service.port }}
-    targetPort: {{ .Values.deletetask.service.targetPort }}
+  - port: {{ .Values.deletetask.servicePort }}
+    targetPort: {{ .Values.deletetask.port }}

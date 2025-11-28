@@ -14,9 +14,9 @@ spec:
     spec:
       containers:
       - name: {{ .Release.Name }}-addtask
-        image: {{ .Values.common.acrServerAddress }}/{{ .Values.addtask.image.repository }}:{{ .Values.addtask.image.tag }}
+        image: "{{ .Values.common.acrServerAddress }}/{{ .Values.addtask.image.repository }}:{{ .Values.addtask.image.tag }}"
         ports:
-        - containerPort: {{ .Values.addtask.containerPort }}
+        - containerPort: {{ .Values.addtask.port }}
         env:
         - name: CONNECTION_STRING
           value: {{ .Values.addtask.env.connectionString}}
