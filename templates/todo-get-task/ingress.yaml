@@ -5,7 +5,7 @@ metadata:
   labels:
     app.kubernetes.io/name: {{ .Release.Name }}-gettask-ingress
 spec:
-  ingressClassName: {{ .Values.common.acrServerAddress }}
+  ingressClassName: {{ .Values.common.ingressClassName }}
   rules:
   - host: {{ .Values.gettask.ingress.host }}
     http:
