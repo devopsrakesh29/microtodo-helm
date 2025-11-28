@@ -1,7 +1,6 @@
 common:
   acrServerAddress: rakeshacr.azurecr.io
   ingressClassName: azure-application-gateway
-
 ui:  
   image:
     repository: microtodoui
@@ -10,9 +9,6 @@ ui:
   servicePort: 80
   ingress: 
     host: todoui.devopsinsight.biz
-    
-
-# add task specific values
 addtask:  
   image:
     repository: addtask
@@ -23,8 +19,6 @@ addtask:
   port: 8000 
   ingress: 
     host: addtask.devopsinsight.biz
-
-# delete task specific values
 deletetask:  
   image:
     repository: deletetask
@@ -35,9 +29,6 @@ deletetask:
   port: 8000
   ingress: 
     host: deletetask.devopsinsight.biz
-      
-
-# get task specific values
 gettask:  
   image:
     repository: gettask
@@ -46,7 +37,6 @@ gettask:
   env:
     connectionString: "Driver={ODBC Driver 18 for SQL Server};Server=tcp:rakeshdbs01.database.windows.net,1433;Database=rakeshsqldb01;Uid=azureuser;Pwd=Password@@12345;Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;"
   servicePort: 80
-     
   ingress: 
     host: gettask.devopsinsight.biz    
 
